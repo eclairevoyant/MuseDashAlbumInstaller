@@ -27,7 +27,7 @@ for ($_i = 0; ; $_i++) {
 		break;
 	}
 }
-$_museDashSteamLibPath = $_steamLibraryConfig.libraryfolders.$_i.path;
+$_museDashSteamLibPath = $_steamLibraryConfig.libraryfolders.$_i.path.replace("\\", "\");
 $_museDashSteamLibConfigFile = $_museDashSteamLibPath + "\steamapps\appmanifest_" + $MuseDashAppId + ".acf";
 $_museDashSteamLibConfig = $vdf.Deserialize((Get-Content $_museDashSteamLibConfigFile));
 
@@ -39,13 +39,14 @@ Write-Information ("Album directory: " + $_customAlbumsDir);
 
 # Create the custom albums directory if it doesn't exist
 if (!(Test-Path $_customAlbumsDir -PathType Container)) {
-	New-Item -ItemType Directory $_customAlbumsDir;
+	New-Item -ItemType Directory $_customAlbumsDir | Out-Null;
 	Write-Debug "Created Custom_Albums folder";
 }
 
 # Copy all files specified in cmd args to the custom album folder
 foreach ($_arg in $args) {
 	# TODO add support for copying folders?
+	# TODO check if it's a true zip file
 	# TODO check zip contents for required files
 
 	if (!(Test-Path $_arg -PathType Leaf)) {
