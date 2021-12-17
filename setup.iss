@@ -39,8 +39,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "C:\Users\lia\git\MuseDashAlbumInstaller\bin\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\lia\git\MuseDashAlbumInstaller\vdf\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\lia\git\MuseDashAlbumInstaller\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\lia\git\MuseDashAlbumInstaller\vdf\VdfDeserializer.psm1"; DestDir: "{app}\vdf"; Flags: ignoreversion
+Source: "C:\Users\lia\git\MuseDashAlbumInstaller\vdf\LICENSE"; DestDir: "{app}\vdf"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

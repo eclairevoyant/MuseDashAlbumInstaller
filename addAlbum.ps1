@@ -14,8 +14,6 @@ $_scriptBody = 'Using module "' + $_scriptPath + '\vdf\VdfDeserializer.psm1"';
 $_script = [ScriptBlock]::Create($_scriptBody)
 . $_script
 
-Start-Transcript -Path debug.log
-
 if ($args.length -eq 0) {
 	# TODO close the file here
 	throw "At least one file must be specified";
@@ -79,5 +77,3 @@ foreach ($_arg in $args) {
 	Copy-Item $_arg $_customAlbumsDir;
 	Write-Debug ("Copied " + $_arg);
 }
-
-Stop-Transcript
