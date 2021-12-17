@@ -1,0 +1,3 @@
+[submodule "vdf"]
+	path = vdf
+	url = https://github.com/BartJolling/ps-steam-cmd.git
