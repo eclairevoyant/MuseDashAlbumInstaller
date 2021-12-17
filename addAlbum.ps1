@@ -14,7 +14,7 @@ if (!(Test-Path variable:MuseDashAppId)) {
 if (!(Test-Path variable:CustomAlbumDirName)) {
 	Set-Variable CustomAlbumDirName -Option Constant -Value "Custom_Albums";
 }
-if (!(Test-Path variable:CustomAlbumDirName)) {
+if (!(Test-Path variable:ChartExtension)) {
 	Set-Variable ChartExtension -Option Constant -Value ".mdm";
 }
 
