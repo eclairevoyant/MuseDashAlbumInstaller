@@ -1,4 +1,20 @@
-Using module vdf/VdfDeserializer.psm1;
+# see https://github.com/MScholtes/PS2EXE/blob/master/README.md
+if ($MyInvocation.MyCommand.CommandType -eq "ExternalScript") {
+	$_scriptPath = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
+}
+else {
+	$_scriptPath = Split-Path -Parent -Path ([Environment]::GetCommandLineArgs()[0])
+	if (!$_scriptPath) {
+		$_scriptPath = "."
+	}
+}
+
+# see https://info.sapien.com/index.php/scripting/scripting-classes/import-powershell-classes-from-modules
+$_scriptBody="Using module $_scriptPath\vdf\VdfDeserializer.psm1";
+$_script = [ScriptBlock]::Create($_scriptBody)
+. $_script
+
+Start-Transcript -Path debug.log
 
 if ($args.length -eq 0) {
 	throw "At least one file must be specified";
@@ -54,7 +70,7 @@ foreach ($_arg in $args) {
 		continue;
 	}
 
-	if ($ChartExtension -ne [System.IO.Path]::GetExtension($_arg) ) {
+	if ($ChartExtension -ne [System.IO.Path]::GetExtension($_arg)) {
 		Write-Error ($_arg + " should have .mdm extension");
 		continue;
 	}
@@ -62,3 +78,5 @@ foreach ($_arg in $args) {
 	Copy-Item $_arg $_customAlbumsDir;
 	Write-Debug ("Copied " + $_arg);
 }
+
+Stop-Transcript
