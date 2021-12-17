@@ -6,7 +6,7 @@
 #define MyAppPublisher "éclairevoyant"
 #define MyAppURL "https://github.com/eclairevoyant/MuseDashAlbumInstaller"
 #define MyAppExeName "AddAlbum.exe"
-#define MyAppAssocName "Muse Dash Music File"
+#define MyAppAssocName "Muse Dash Map File"
 #define MyAppAssocExt ".mdm"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
