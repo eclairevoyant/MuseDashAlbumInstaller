@@ -10,13 +10,14 @@ else {
 }
 
 # see https://info.sapien.com/index.php/scripting/scripting-classes/import-powershell-classes-from-modules
-$_scriptBody="Using module $_scriptPath\vdf\VdfDeserializer.psm1";
+$_scriptBody = 'Using module "' + $_scriptPath + '\vdf\VdfDeserializer.psm1"';
 $_script = [ScriptBlock]::Create($_scriptBody)
 . $_script
 
 Start-Transcript -Path debug.log
 
 if ($args.length -eq 0) {
+	# TODO close the file here
 	throw "At least one file must be specified";
 }
 
